@@ -1,0 +1,64 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Contact — Meridian Log</title>
+<link rel="icon" type="image/png" href="images/app-icon.png" />
+<link rel="stylesheet" href="styles.css" />
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="images/app-icon.png" alt="Meridian Log app icon" />
+      <span>Meridian Log</span>
+    </a>
+    <nav>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+  <div class="wrap">
+    <a class="back-link" href="index.html">&larr; Back to home</a>
+    <h1>Contact</h1>
+    <p class="lede">Questions, feedback, or bug reports — send a note below.</p>
+
+    <!--
+      TODO: replace REPLACE_WITH_FORMSPREE_ID below with your real Formspree
+      form ID (e.g. https://formspree.io/f/xxxxxxxx) once the form is created.
+    -->
+    <form
+      class="contact-form"
+      action="https://formspree.io/f/REPLACE_WITH_FORMSPREE_ID"
+      method="POST"
+    >
+      <div class="field">
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name" required />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="_replyto" required />
+      </div>
+      <div class="field">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+      <button class="submit-btn" type="submit">Send</button>
+      <p class="form-note">
+        This form is handled by Formspree. Your message goes directly to the
+        Meridian Log team.
+      </p>
+    </form>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+    <span class="copyright">&copy; 2026 Meridian Log</span>
+  </div>
+</footer>

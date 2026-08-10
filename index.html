@@ -1,0 +1,164 @@
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Meridian Log — A snapshot of your world, every day at noon</title>
+<meta
+  name="description"
+  content="Meridian Log is an iOS app that prompts you once per day, at noon, to log a personal snapshot of your life. Location, elevation, and weather are captured automatically."
+/>
+<link rel="icon" type="image/png" href="images/app-icon.png" />
+<link rel="stylesheet" href="styles.css" />
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="images/app-icon.png" alt="Meridian Log app icon" />
+      <span>Meridian Log</span>
+    </a>
+    <nav>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <img class="icon" src="images/app-icon.png" alt="Meridian Log app icon" />
+    <h1>A snapshot of your world, every day at noon.</h1>
+    <p>
+      Meridian Log is an iOS app that prompts you once per day — at noon in
+      your local timezone — to log a personal snapshot of your life. It
+      automatically captures contextual data (location, elevation, weather)
+      and presents a short set of customizable open-ended questions.
+    </p>
+    <span class="badge"><span class="dot"></span> Coming soon to the App Store</span>
+  </section>
+
+  <section class="slideshow-section">
+    <div class="slideshow" id="slideshow">
+      <div class="slideshow-frame">
+        <div class="slide is-active" data-index="0">
+          <img
+            src="images/meridian-log-screenshot-1.png"
+            alt="Survey start screen showing today's date, location, elevation, and weather data"
+          />
+        </div>
+        <div class="slide" data-index="1">
+          <img
+            src="images/meridian-log-screenshot-2.png"
+            alt="Survey question card with default and custom questions"
+          />
+        </div>
+        <div class="slide" data-index="2">
+          <img
+            src="images/meridian-log-screenshot-3.png"
+            alt="Map view showing every survey entry plotted by location"
+          />
+        </div>
+        <div class="slide" data-index="3">
+          <img
+            src="images/meridian-log-screenshot-4.png"
+            alt="Trends and highlights dashboard"
+          />
+        </div>
+        <div class="slide" data-index="4">
+          <img
+            src="images/meridian-log-screenshot-5.png"
+            alt="Bar chart of most frequent question answers"
+          />
+        </div>
+      </div>
+
+      <div class="slide-caption" id="slide-caption">
+        <!-- filled by JS -->
+      </div>
+
+      <div class="slide-controls">
+        <button class="slide-nav-btn" id="prev-btn" aria-label="Previous screenshot">&#8249;</button>
+        <div class="slide-dots" id="slide-dots"></div>
+        <button class="slide-nav-btn" id="next-btn" aria-label="Next screenshot">&#8250;</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <nav>
+      <a href="contact.html">Contact</a>
+      <a href="privacy.html">Privacy Policy</a>
+    </nav>
+    <span class="copyright">&copy; 2026 Meridian Log</span>
+  </div>
+</footer>
+
+<script>
+  const captions = [
+    { title: "Take a Survey Once per Day", body: "" },
+    {
+      title: "Answer Some Questions",
+      body: "Use the defaults or configure your own custom questions",
+    },
+    { title: "Learn About Your Life", body: "See every survey plotted on a map" },
+    {
+      title: "Trends & Highlights",
+      body: "What is the hottest temperature you've seen all year?",
+    },
+    {
+      title: "Questions & Answers",
+      body: "Where and with whom do you spend the most",
+    },
+  ];
+
+  const slides = document.querySelectorAll(".slide");
+  const dotsContainer = document.getElementById("slide-dots");
+  const captionEl = document.getElementById("slide-caption");
+  const prevBtn = document.getElementById("prev-btn");
+  const nextBtn = document.getElementById("next-btn");
+
+  let current = 0;
+  let timer;
+
+  captions.forEach((_, i) => {
+    const dot = document.createElement("button");
+    dot.className = "slide-dot" + (i === 0 ? " is-active" : "");
+    dot.setAttribute("aria-label", "Go to screenshot " + (i + 1));
+    dot.addEventListener("click", () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = document.querySelectorAll(".slide-dot");
+
+  function render() {
+    slides.forEach((s, i) => s.classList.toggle("is-active", i === current));
+    dots.forEach((d, i) => d.classList.toggle("is-active", i === current));
+    const c = captions[current];
+    captionEl.innerHTML =
+      "<h3>" + c.title + "</h3>" + (c.body ? "<p>" + c.body + "</p>" : "");
+  }
+
+  function goTo(i) {
+    current = (i + slides.length) % slides.length;
+    render();
+    resetTimer();
+  }
+
+  function next() {
+    goTo(current + 1);
+  }
+
+  function prev() {
+    goTo(current - 1);
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, 5000);
+  }
+
+  prevBtn.addEventListener("click", prev);
+  nextBtn.addEventListener("click", next);
+
+  render();
+  resetTimer();
+</script>
