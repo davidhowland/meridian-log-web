@@ -178,7 +178,12 @@ img {
 .slide-caption {
   text-align: center;
   margin-top: 24px;
-  min-height: 3.2em;
+  height: 96px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
 }
 
 .slide-caption h3 {
