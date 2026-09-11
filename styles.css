@@ -376,4 +376,13 @@ form.contact-form {
   .hero h1 {
     font-size: 1.75rem;
   }
+
+  .site-header .wrap {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .site-header nav {
+    gap: 16px;
+  }
 }
