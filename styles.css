@@ -117,24 +117,15 @@ img {
   margin: 0 auto 32px;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 22px;
-  border-radius: 999px;
-  background: var(--color-bg-alt);
-  color: var(--color-text-muted);
-  border: 1px solid var(--color-border);
-  font-size: 0.95rem;
-  font-weight: 500;
+.app-store-badge {
+  display: inline-block;
 }
 
-.badge .dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: var(--color-accent);
+.app-store-badge img {
+  width: 245px;
+  height: auto;
+  vertical-align: middle;
+  object-fit: contain;
 }
 
 /* Slideshow */
@@ -384,5 +375,14 @@ form.contact-form {
 @media (max-width: 600px) {
   .hero h1 {
     font-size: 1.75rem;
+  }
+
+  .site-header .wrap {
+    flex-wrap: wrap;
+    row-gap: 8px;
+  }
+
+  .site-header nav {
+    gap: 16px;
   }
 }
